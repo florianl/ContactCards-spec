@@ -1,11 +1,11 @@
 Name:		ContactCards
-Version:	0.07
+Version:	0.08
 Group:		Applications/Communications
 Release:	1%{?dist}
 Summary:	Simple address book written in C
 License:	GPLv2
 URL:		https://www.der-flo.net/ContactCards.html
-Source:     https://github.com/florianl/ContactCards/archive/0.07.tar.gz
+Source:     https://github.com/florianl/ContactCards/archive/0.08.tar.gz
 BuildRequires:	gtk3-devel
 BuildRequires:	sqlite-devel
 BuildRequires:	neon-devel
@@ -33,5 +33,8 @@ make DESTDIR=%{buildroot} install
 
 
 %changelog
+* Sat Apr 19 2014 Florian L. <dev@der-flo.net> 0.08-1
+- new Version 0.08
+
 * Fri Apr 18 2014 Florian L. <dev@der-flo.net> 0.07-1
 - Initial packaging
