@@ -1,7 +1,7 @@
 Name:		ContactCards
 Version:	0.08
 Group:		Applications/Communications
-Release:	1%{?dist}
+Release:	2%{?dist}
 Summary:	Simple address book written in C
 License:	GPLv2
 URL:		https://www.der-flo.net/ContactCards.html
