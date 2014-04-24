@@ -1,7 +1,7 @@
 Name:		ContactCards
 Version:	0.08
 Group:		Applications/Communications
-Release:	2%{?dist}
+Release:	3%{?dist}
 Summary:	Simple address book written in C
 License:	GPLv2
 URL:		https://www.der-flo.net/ContactCards.html
@@ -12,6 +12,7 @@ BuildRequires:	neon-devel
 BuildRequires:	gettext-devel
 BuildRequires:	intltool
 BuildRequires:	autoconf
+BuildRequires:	desktop-files-utils
 
 %description
 ContactCards fetches contact information, saved as vCards, from servers
@@ -28,13 +29,27 @@ make %{?_smp_mflags}
 %install
 make DESTDIR=%{buildroot} install
 
+mkdir -p $RPM_BUILD_ROOT/usr/share/applications/
+
+cat > $RPM_BUILD_ROOT/usr/share/applications/%{name}.desktop << EOF
+[Desktop Entry]
+Name=ContactCards
+Comment=A simple address book
+Exec=contactcards
+Type=Application
+Terminal=false
+EOF
+
 %files 
 %doc README.md COPYING
 %{_bindir}/ContactCards
 %{_mandir}/man1/ContactCards.1.gz
-
+%{_datadir}/applications/%{name}.desktop
 
 %changelog
+* Thu Apr 24 2014 Florian L. <dev@der-flo.net> 0.08-3
+- add .desktop-file
+
 * Wed Apr 23 2014 Florian L. <dev@der-flo.net> 0.08-2
 - add missing BuildRequires
 - fix Whitespaces
