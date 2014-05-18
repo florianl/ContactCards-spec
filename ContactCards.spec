@@ -42,11 +42,14 @@ EOF
 
 %files
 %doc README.md COPYING
-%{_bindir}/ContactCards
+%{_bindir}/contactcards
 %{_mandir}/man1/ContactCards.1.gz
 %{_datadir}/applications/%{name}.desktop
 
 %changelog
+* Sun May 18 2014 Florian L. <dev@der-flo.net> 0.09-2
+- Fix the naming of the binary
+
 * Sun May 18 2014 Florian L. <dev@der-flo.net> 0.09-1
 - new Version 0.09
 
