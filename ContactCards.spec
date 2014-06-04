@@ -1,11 +1,11 @@
 Name:		ContactCards
 Version:	0.09
 Group:		Applications/Communications
-Release:	1%{?dist}
+Release:	3%{?dist}
 Summary:	Simple address book written in C
 License:	GPLv2
 URL:		https://www.der-flo.net/ContactCards.html
-Source:		https://github.com/florianl/ContactCards/archive/0.09.tar.gz
+Source0:		https://github.com/florianl/ContactCards/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:	gtk3-devel
 BuildRequires:	sqlite-devel
 BuildRequires:	neon-devel
@@ -47,6 +47,9 @@ EOF
 %{_datadir}/applications/%{name}.desktop
 
 %changelog
+* Wed Jun  4 2014 Florian L. <dev@der-flo.net> 0.09-3
+- Rename Source to Source0
+
 * Sun May 18 2014 Florian L. <dev@der-flo.net> 0.09-2
 - Fix the naming of the binary
 
