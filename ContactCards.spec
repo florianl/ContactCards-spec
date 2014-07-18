@@ -1,10 +1,10 @@
 Name:		ContactCards
-Version:	0.09
+Version:	0.10
 Group:		Applications/Communications
-Release:	3%{?dist}
+Release:	4444%{?dist}
 Summary:	Simple address book written in C
 License:	GPLv2
-URL:		https://www.der-flo.net/ContactCards.html
+URL:		https://der-flo.net/contactcards
 Source0:		https://github.com/florianl/ContactCards/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:	gtk3-devel
 BuildRequires:	sqlite-devel
@@ -12,7 +12,7 @@ BuildRequires:	neon-devel
 BuildRequires:	gettext-devel
 BuildRequires:	intltool
 BuildRequires:	autoconf
-BuildRequires:	desktop-files-utils
+BuildRequires:	desktop-file-utils
 
 %description
 ContactCards fetches contact information, saved as vCards, from servers
@@ -29,12 +29,20 @@ make %{?_smp_mflags}
 %install
 make DESTDIR=%{buildroot} install
 
-mkdir -p $RPM_BUILD_ROOT/usr/share/applications/
+%{__mkdir_p} $RPM_BUILD_ROOT/usr/share/applications/
+
+for s in 48 64 128 256; do
+	%{__mkdir_p} $RPM_BUILD_ROOT%{_datadir}/icons/hicolor/${s}x${s}/apps
+	%{__cp} -p artwork/icon_${s}.png \
+		$RPM_BUILD_ROOT%{_datadir}/icons/hicolor/${s}x${s}/apps/contactcards.png
+done
 
 cat > $RPM_BUILD_ROOT/usr/share/applications/%{name}.desktop << EOF
 [Desktop Entry]
 Name=ContactCards
 Comment=A simple address book
+Icon=contactcards
+Keywords=vcard;address book;
 Exec=contactcards
 Type=Application
 Terminal=false
@@ -45,8 +53,22 @@ EOF
 %{_bindir}/contactcards
 %{_mandir}/man1/ContactCards.1.gz
 %{_datadir}/applications/%{name}.desktop
+%{_datadir}/icons/hicolor/256x256/apps/contactcards.png
+%{_datadir}/icons/hicolor/128x128/apps/contactcards.png
+%{_datadir}/icons/hicolor/64x64/apps/contactcards.png
+%{_datadir}/icons/hicolor/48x48/apps/contactcards.png
 
 %changelog
+* Fri Jul 18 2014 Florian L. <dev@der-flo.net> 0.10-1
+- Update to version 0.10
+- Add Icon to .desktop
+- Add Keywords to .desktop
+- Use more macros
+- Fix BuildRequires
+
+* Sun Jul 13 2014 Florian L. <dev@der-flo.net> 0.09-4
+- Change URL of project
+
 * Wed Jun  4 2014 Florian L. <dev@der-flo.net> 0.09-3
 - Rename Source to Source0
 
