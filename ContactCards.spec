@@ -1,7 +1,7 @@
 Name:		ContactCards
-Version:	0.10
+Version:	0.11
 Group:		Applications/Communications
-Release:	4444%{?dist}
+Release:	1%{?dist}
 Summary:	Simple address book written in C
 License:	GPLv2
 URL:		https://der-flo.net/contactcards
@@ -29,11 +29,11 @@ make %{?_smp_mflags}
 %install
 make DESTDIR=%{buildroot} install
 
-%{__mkdir_p} $RPM_BUILD_ROOT/usr/share/applications/
+mkdir -p $RPM_BUILD_ROOT/usr/share/applications/
 
 for s in 48 64 128 256; do
-	%{__mkdir_p} $RPM_BUILD_ROOT%{_datadir}/icons/hicolor/${s}x${s}/apps
-	%{__cp} -p artwork/icon_${s}.png \
+	mkdir -p  $RPM_BUILD_ROOT%{_datadir}/icons/hicolor/${s}x${s}/apps
+	install -p artwork/icon_${s}.png \
 		$RPM_BUILD_ROOT%{_datadir}/icons/hicolor/${s}x${s}/apps/contactcards.png
 done
 
@@ -59,6 +59,10 @@ EOF
 %{_datadir}/icons/hicolor/48x48/apps/contactcards.png
 
 %changelog
+* Sat Aug 16 2014 Florian L. <dev@der-flo.net> 0.11-1
+- Update to version 0.11
+- Undo macros for unix tools
+
 * Fri Jul 18 2014 Florian L. <dev@der-flo.net> 0.10-1
 - Update to version 0.10
 - Add Icon to .desktop
