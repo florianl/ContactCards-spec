@@ -1,5 +1,5 @@
 Name:		ContactCards
-Version:	0.15
+Version:	0.16
 Group:		Applications/Communications
 Release:	1%{?dist}
 Summary:	Simple address book written in C
@@ -59,6 +59,9 @@ EOF
 %{_datadir}/icons/hicolor/48x48/apps/contactcards.png
 
 %changelog
+* Sat Jan 24 2015 Florian L. <dev@der-flo.net> 0.16-1
+- Update to 0.16
+
 * Tue Dec 23 2014 Florian L. <dev@der-flo.net> 0.15-1
 - Update to 0.15
 
