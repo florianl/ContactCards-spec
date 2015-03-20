@@ -1,5 +1,5 @@
 Name:		ContactCards
-Version:	0.17
+Version:	0.18
 Group:		Applications/Communications
 Release:	1%{?dist}
 Summary:	Simple address book written in C
@@ -49,7 +49,9 @@ Terminal=false
 EOF
 
 %files
-%doc README.md COPYING
+%doc README.md
+%{!?_licensedir:%global license %%doc}
+%license COPYING
 %{_bindir}/contactcards
 %{_mandir}/man1/ContactCards.1.gz
 %{_datadir}/applications/%{name}.desktop
@@ -59,6 +61,9 @@ EOF
 %{_datadir}/icons/hicolor/48x48/apps/contactcards.png
 
 %changelog
+* Fri Mar 20 2015 Florian L. <dev@der-flo.net> 0.18-1
+- Update to 0.18
+
 * Fri Feb 20 2015 Florian L. <dev@der-flo.net> 0.17-1
 - Update to 0.17
 
