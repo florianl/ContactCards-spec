@@ -4,7 +4,7 @@ Group:		Applications/Communications
 Release:	1%{?dist}
 Summary:	Simple address book written in C
 License:	GPLv2
-URL:		https://der-flo.net/contactcards
+URL:		http://florianl.github.io/ContactCards/
 Source0:		https://github.com/florianl/ContactCards/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:	gtk3-devel
 BuildRequires:	sqlite-devel
